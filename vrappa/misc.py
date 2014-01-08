@@ -6,6 +6,7 @@
 Miscellaneous helpfull classes based on :class:`vrappa.VrappaBase`.
 """
 
+import pprint
 import smtplib
 import datetime
 import traceback
@@ -25,7 +26,9 @@ SMTP_CONF_DEFAULT = {
 MAIL_CONF_DEFAULT = {
     'sender': 'root@localhost',
     'msg_fmt': (
-        u"{timestamp}\n"
+        u"[{timestamp}][{app}]\n"
+        u"Arguments: {args}\n"
+        u"Keyword arguments: {kwargs}\n\n"
         u"{exc_tb}\n"
     ),
     'subject_fmt': u"[{app}]: {exc_str}",
@@ -64,6 +67,8 @@ class EmailOnException(VrappaBase):
             'app': self.app_str,
             'exc_str': str(exc),
             'exc_tb': traceback.format_exc(limit=30),
+            'args': pprint.pformat(args),
+            'kwargs': pprint.pformat(kwargs),
         }
 
     def get_recipients(self, exc, args=None, kwargs=None):
