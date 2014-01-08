@@ -32,7 +32,7 @@ MAIL_CONF_DEFAULT = {
         u"{exc_tb}\n"
     ),
     'subject_fmt': u"[{app}]: {exc_str}",
-    'recepients': [
+    'recipients': [
         'root@localhost',
     ],
 }
