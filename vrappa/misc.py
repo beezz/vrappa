@@ -72,10 +72,10 @@ class EmailOnException(VrappaBase):
         }
 
     def get_recipients(self, exc, args=None, kwargs=None):
-        return self.mail_conf['recepients']
+        return self.mail_conf['recipients']
 
     def get_to_field(self, exc, args=None, kwargs=None):
-        return ','.join(self.mail_conf['recepients'])
+        return ','.join(self.mail_conf['recipients'])
 
     def get_from_field(self, exc, args=None, kwargs=None):
         return self.mail_conf['sender']
